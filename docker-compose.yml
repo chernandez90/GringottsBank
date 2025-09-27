@@ -1,0 +1,6 @@
+services:
+  gringottsbankapi:
+    image: ${DOCKER_REGISTRY-}gringottsbankapi
+    build:
+      context: .
+      dockerfile: GringottsBankAPI/Dockerfile

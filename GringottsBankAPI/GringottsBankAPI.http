@@ -1,0 +1,6 @@
+@GringottsBankAPI_HostAddress = http://localhost:5256
+
+GET {{GringottsBankAPI_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
