@@ -1,6 +1,6 @@
-﻿namespace GringottsBankAPI.Models
+﻿namespace GringottsBankAPI.DTOs
 {
-    public class Account
+    public class AccountDto
     {
         public int Id { get; set; }
         public string AccountHolderName { get; set; } = string.Empty;
