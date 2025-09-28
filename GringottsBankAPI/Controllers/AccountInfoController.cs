@@ -1,7 +1,4 @@
-﻿using GringottsBankAPI.DTOs;
-using GringottsBankAPI.Features.Accounts.Commands;
-using GringottsBankAPI.Models;
-using MediatR;
+﻿using GringottsBankAPI.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,10 +8,10 @@ namespace GringottsBankAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AccountController : ControllerBase
+    public class AccountInfoController : ControllerBase
     {
         private readonly BankDbContext _context;
-        public AccountController(BankDbContext context)
+        public AccountInfoController(BankDbContext context)
         {
             _context = context;
         }
@@ -28,27 +25,10 @@ namespace GringottsBankAPI.Controllers
 
         // GET api/<AccountController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<ActionResult<Account>> GetAccountBalance(int id)
         {
-            return "value";
-        }
-
-        // POST api/<AccountController>
-        [HttpPost]
-        public void Post([FromBody] string value)
-        {
-        }
-
-        // PUT api/<AccountController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<AccountController>/5
-        [HttpDelete("{id}")]
-        public void Delete(int id)
-        {
+            var account = await _context.Accounts.FindAsync(id);
+            return Ok(account);
         }
     }
 }
