@@ -1042,7 +1042,7 @@ onMounted(() => {
 .navigation-bar {
   position: sticky;
   top: 0;
-  width: 100%;
+  width: calc(100% + 80px);
   background: 
     /* Darker parchment for navigation */ radial-gradient(
       ellipse at center,
@@ -1055,7 +1055,7 @@ onMounted(() => {
       rgba(139, 69, 19, 0.06) 0%,
       transparent 15%
     );
-  padding: 15px 20px;
+  padding: 15px 40px;
   margin: -40px -40px 20px -40px;
   border-bottom: 1px solid rgba(139, 69, 19, 0.2);
   box-shadow: 0 2px 4px rgba(139, 69, 19, 0.1),
@@ -1408,12 +1408,18 @@ onMounted(() => {
 .amount-section {
   width: 100%;
   max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .available-balance {
-  color: #ffd700;
+  color: #8b4513;
   font-size: 1.1rem;
   margin-bottom: 20px;
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgba(139, 69, 19, 0.2);
 }
 
 .quick-amounts {
@@ -1424,18 +1430,47 @@ onMounted(() => {
 }
 
 .amount-btn {
-  background: linear-gradient(45deg, #8a2be2, #9370db);
-  color: white;
-  border: none;
+  background: 
+    /* Aged parchment button */ radial-gradient(
+      ellipse at 40% 30%,
+      #e8d5b7 0%,
+      #dcc899 50%,
+      #cfb58a 100%
+    ),
+    /* Subtle age spots */
+      radial-gradient(
+        circle at 20% 70%,
+        rgba(139, 69, 19, 0.04) 0%,
+        transparent 15%
+      );
+  color: #2f1b14;
+  border: 1px solid rgba(139, 69, 19, 0.25);
   padding: 15px;
-  border-radius: 5px;
+  border-radius: 6px;
   cursor: pointer;
-  font-weight: bold;
+  font-weight: 600;
+  font-family: "Cinzel", serif;
   transition: all 0.3s ease;
+  text-shadow: 1px 1px 2px rgba(139, 69, 19, 0.1);
+  box-shadow: 0 2px 4px rgba(139, 69, 19, 0.1),
+    inset 0 1px 2px rgba(255, 248, 235, 0.3);
 }
 
 .amount-btn:hover:not(:disabled) {
-  background: linear-gradient(45deg, #9370db, #8a2be2);
+  transform: translateY(-1px);
+  background: radial-gradient(
+      ellipse at 40% 30%,
+      #ebd8ba 0%,
+      #dfc99c 50%,
+      #d2b88d 100%
+    ),
+    radial-gradient(
+      circle at 20% 70%,
+      rgba(139, 69, 19, 0.06) 0%,
+      transparent 15%
+    );
+  box-shadow: 0 3px 6px rgba(139, 69, 19, 0.15),
+    inset 0 1px 2px rgba(255, 248, 235, 0.4);
 }
 
 .amount-btn:disabled {
@@ -1445,6 +1480,10 @@ onMounted(() => {
 
 .custom-amount {
   margin-bottom: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .custom-amount label {
@@ -1455,10 +1494,12 @@ onMounted(() => {
   margin-bottom: 10px;
   font-size: 1.1rem;
   text-shadow: 1px 1px 2px rgba(139, 69, 19, 0.1);
+  text-align: center;
 }
 
 .magical-input {
   width: 100%;
+  max-width: 300px;
   padding: 15px;
   border: 1px solid rgba(139, 69, 19, 0.3);
   border-radius: 4px;
@@ -1517,6 +1558,19 @@ onMounted(() => {
       rgba(101, 67, 33, 0.025) 0%,
       transparent 10%
     );
+}
+
+/* Hide number input spinners/arrows */
+.magical-input::-webkit-outer-spin-button,
+.magical-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+.magical-input[type="number"] {
+  -moz-appearance: textfield;
+  appearance: textfield;
 }
 
 .button-group {
@@ -1703,6 +1757,9 @@ onMounted(() => {
 .transfer-section {
   width: 100%;
   max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .transfer-accounts {
@@ -1723,14 +1780,17 @@ onMounted(() => {
 .from-account label,
 .to-account label {
   display: block;
-  color: #ffd700;
+  color: #654321;
   margin-bottom: 10px;
-  font-weight: bold;
+  font-weight: 600;
+  font-family: "Cinzel", serif;
+  text-shadow: 1px 1px 2px rgba(139, 69, 19, 0.15);
 }
 
 .transfer-arrow {
   font-size: 2rem;
-  color: #ffd700;
+  color: #8b4513;
+  text-shadow: 1px 1px 2px rgba(139, 69, 19, 0.3);
 }
 
 .transaction-list {
@@ -1846,13 +1906,15 @@ onMounted(() => {
 }
 
 .success {
-  color: #32cd32;
+  color: #2d5a2d;
   text-align: center;
+  text-shadow: 1px 1px 2px rgba(45, 90, 45, 0.2);
 }
 
 .error {
-  color: #ff6347;
+  color: #8b2635;
   text-align: center;
+  text-shadow: 1px 1px 2px rgba(139, 38, 53, 0.2);
 }
 
 .updated-balances {
@@ -1860,9 +1922,11 @@ onMounted(() => {
 }
 
 .balance-update {
-  color: #ffd700;
+  color: #2f1b14;
   font-size: 1.1rem;
   margin: 5px 0;
+  font-weight: 600;
+  text-shadow: 1px 1px 2px rgba(139, 69, 19, 0.15);
 }
 
 .loading-screen {
