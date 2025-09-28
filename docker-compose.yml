@@ -4,14 +4,13 @@ services:
     build:
       context: .
       dockerfile: GringottsBankAPI/Dockerfile
-
   gringottsbankui:
     build:
       context: ./GringottsBankUI
       dockerfile: Dockerfile
       target: dev
     ports:
-      - "3000:3000"
+      - "3000"
     volumes:
       - ./GringottsBankUI:/app
       - /app/node_modules

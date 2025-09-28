@@ -5,6 +5,16 @@ using System.Reflection;
 using System.Text.Json.Serialization;
 var builder = WebApplication.CreateBuilder(args);
 
+// Add CORS service
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAll",
+        builder => builder
+            .AllowAnyOrigin()
+            .AllowAnyMethod()
+            .AllowAnyHeader());
+});
+
 builder.Services.AddDbContext<BankDbContext>(options =>
     options.UseInMemoryDatabase("GringottsBankDb"));
 // Add services to the container.
@@ -32,6 +42,9 @@ using (var scope = app.Services.CreateScope())
     var dbContext = services.GetRequiredService<BankDbContext>();
     dbContext.Database.EnsureCreated(); // This will apply the seed data
 }
+
+// Use CORS before other middleware
+app.UseCors("AllowAll");
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {

@@ -44,7 +44,24 @@ namespace GringottsBankAPI.Controllers
                 return BadRequest(errorMessage);
             }
 
-            return CreatedAtAction(nameof(GetTransactionById), new { id = transaction.Id }, transaction);
+            return CreatedAtAction(nameof(GetTransactionById), new { id = transaction!.Id }, transaction);
+        }
+        [HttpPost("transfer")]
+        public async Task<ActionResult<IEnumerable<TransactionResponseDto>>> TransferFunds([FromBody] TransferDto transferDto)
+        {
+            if (transferDto == null)
+            {
+                return BadRequest("Transfer data is null.");
+            }
+
+            var (transactions, errorMessage) = await _transactionService.ProcessTransferAsync(transferDto);
+
+            if (!string.IsNullOrEmpty(errorMessage))
+            {
+                return BadRequest(errorMessage);
+            }
+
+            return Ok(transactions);
         }
         [HttpGet("{id}")]
         public async Task<ActionResult<TransactionResponseDto>> GetTransactionById(int id)
