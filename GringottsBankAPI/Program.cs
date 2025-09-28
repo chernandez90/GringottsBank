@@ -21,7 +21,8 @@ builder.Services.AddDbContext<BankDbContext>(options =>
 builder.Services.AddScoped<ITransactionService, TransactionService>();
 builder.Services.AddControllers().AddJsonOptions(options =>
 {
-    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
+    // Remove reference handling for cleaner JSON
+    options.JsonSerializerOptions.ReferenceHandler = null;
     // Optional: Ignore null values to reduce payload size
     options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
 });
