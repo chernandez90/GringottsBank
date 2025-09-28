@@ -1,8 +1,9 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using GringottsBankAPI.DTOs;
+﻿using GringottsBankAPI.DTOs;
+using GringottsBankAPI.Features.Accounts.Commands;
 using GringottsBankAPI.Models;
 using MediatR;
-using GringottsBankAPI.Features.Accounts.Commands;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -12,14 +13,17 @@ namespace GringottsBankAPI.Controllers
     [ApiController]
     public class AccountController : ControllerBase
     {
-        private readonly IMediator _mediator;
+        private readonly BankDbContext _context;
+        public AccountController(BankDbContext context)
+        {
+            _context = context;
+        }
         // GET: api/<AccountController>
         [HttpGet]
-        public async Task<ActionResult<Account>> GetAccountBalance([FromBody] AccountDto account)
+        public async Task<ActionResult<IEnumerable<Account>>> GetAllAccounts()
         {
-            var command = new GetAccountBalanceCommand { AccountDto = account };
-            var claim =await _mediator.Send(command);
-            return Ok();
+            var accounts = await _context.Accounts.ToListAsync();
+            return Ok(accounts);
         }
 
         // GET api/<AccountController>/5
