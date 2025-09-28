@@ -1,0 +1,49 @@
+# CODEOWNERS file for GringottsBank repository
+
+# These owners will be the default owners for everything in
+
+# the repo. Unless a later match takes precedence,
+
+# these users will be requested for review when someone
+
+# opens a pull request.
+
+- @chernandez90
+
+# API Project (C# .NET)
+
+/GringottsBankAPI/ @chernandez90
+_.cs @chernandez90
+_.csproj @chernandez90
+appsettings\*.json @chernandez90
+
+# UI Project (Vue.js)
+
+/GringottsBankUI/ @chernandez90
+_.vue @chernandez90
+_.js @chernandez90
+_.ts @chernandez90
+package_.json @chernandez90
+vite.config.js @chernandez90
+
+# Infrastructure and DevOps
+
+docker-compose.yml @chernandez90
+**/Dockerfile @chernandez90
+**/.dockerignore @chernandez90
+
+# GitHub Actions workflows
+
+/.github/ @chernandez90
+/.github/workflows/ @chernandez90
+
+# Configuration files
+
+_.json @chernandez90
+_.yml @chernandez90
+\*.yaml @chernandez90
+
+# Documentation
+
+\*.md @chernandez90
+/docs/ @chernandez90
