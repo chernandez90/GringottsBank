@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36518.9 d17.14
+VisualStudioVersion = 17.14.36518.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GringottsBankAPI", "GringottsBankAPI\GringottsBankAPI.csproj", "{BBA60F99-6F56-407E-BD9C-BA3768078514}"
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{81DDED9D-158B-E303-5F62-77A2896D2A5A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GringottsBankAPI.Tests", "GringottsBankAPI.Tests\GringottsBankAPI.Tests.csproj", "{31753EBA-5ECF-4852-8AE4-F5AD491218C8}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{81DDED9D-158B-E303-5F62-77A2896D2A5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81DDED9D-158B-E303-5F62-77A2896D2A5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81DDED9D-158B-E303-5F62-77A2896D2A5A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{31753EBA-5ECF-4852-8AE4-F5AD491218C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31753EBA-5ECF-4852-8AE4-F5AD491218C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31753EBA-5ECF-4852-8AE4-F5AD491218C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31753EBA-5ECF-4852-8AE4-F5AD491218C8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
